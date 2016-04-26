@@ -100,9 +100,15 @@ gulp.task('component', () => {
     return val.charAt(0).toUpperCase() + val.slice(1);
   };
   const name = yargs.argv.name;
+  if (!name) {
+     gutil.log(gutil.colors.red('please supply a name for the component using the --name param, eg: '));
+     gutil.log(gutil.colors.cyan('\tgulp --name=componentname'));
+     return;
+  }
+  
   const parentPath = yargs.argv.parent || '';
   const destPath = path.join(resolveToComponents(), parentPath, name);
-
+  
   return gulp.src(paths.blankTemplates)
     .pipe(template({
       name: name,

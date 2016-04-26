@@ -1,10 +1,12 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import AppComponent from './app.component';
+import ColorPicker from './components/colorpicker/colorpicker';
 import 'normalize.css';
 
 angular.module('app', [
-  uiRouter
+  uiRouter,
+  ColorPicker.name
 ])
 
 .config(($locationProvider) => {
